@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class FamousQuotes {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
 
         String[] quotes = {
                 "Be yourself; everyone else is already taken. - Oscar Wilde",
@@ -20,17 +21,43 @@ public class FamousQuotes {
                 "Without music, life would be a mistake. - Friedrich Nietzsche"
         };
 
-        System.out.println("Enter a number between 1 and 10: ");
-        try {
-            int number = Integer.parseInt(scanner.nextLine());
-            if (number >= 1 && number <= 10) {
-                System.out.println("Quote: " + quotes[number - 1]);
-            } else {
-                System.out.println("Number is out of range: ");
+        boolean running = true;
+
+        while (running) {
+            System.out.println("\nMenu: ");
+            System.out.println("1. Select a quote by number");
+            System.out.println("2. Display a random quote");
+            System.out.println("3. Exit");
+            System.out.println("Choose an option: ");
+            String choice = scanner.nextLine();
+
+            switch (choice) {
+                case "1":
+                    System.out.println("Enter a number between 1 and 10: ");
+                    try {
+                        int number = Integer.parseInt(scanner.nextLine());
+                        if (number >= 1 && number <= 10) {
+                            System.out.println("Quote: " + quotes[number - 1]);
+                        } else {
+                            System.out.println("Number is out of range: ");
+                        }
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid input. Please enter a number");
+                    }
+                    break;
+                case "2":
+                    int randomNumber = random.nextInt(quotes.length);
+                    System.out.println("Random Quote: " + quotes[randomNumber]);
+                    break;
+                case "3":
+                    running = false;
+                    System.out.println("Goodbye!");
+                    break;
+                default:
+                    System.out.println("Invalid option: Try again.");
             }
-        }catch (NumberFormatException e) {
-            System.out.println("Invalid input. Please enter a number");
         }
+
         scanner.close();
 
     }
