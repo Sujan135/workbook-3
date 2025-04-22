@@ -21,10 +21,16 @@ public class FamousQuotes {
         };
 
         System.out.println("Enter a number between 1 and 10: ");
-        int number = scanner.nextInt();
-        System.out.println("Quote: " + quotes[number-1]);
-
-
+        try {
+            int number = Integer.parseInt(scanner.nextLine());
+            if (number >= 1 && number <= 10) {
+                System.out.println("Quote: " + quotes[number - 1]);
+            } else {
+                System.out.println("Number is out of range: ");
+            }
+        }catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter a number");
+        }
         scanner.close();
 
     }
