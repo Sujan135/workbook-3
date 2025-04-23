@@ -9,7 +9,7 @@ public class PayrollCalculator {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        try{
+        try {
 
             System.out.println("Enter the name of file:");
             String inputFile = scanner.nextLine();
@@ -25,7 +25,7 @@ public class PayrollCalculator {
             bufferedReader.readLine();
 
             String line;
-            while((line = bufferedReader.readLine()) != null) {
+            while ((line = bufferedReader.readLine()) != null) {
                 String[] data = line.split("\\|");
 
                 int id = Integer.parseInt(data[0]);
@@ -33,28 +33,26 @@ public class PayrollCalculator {
                 double hours = Double.parseDouble(data[2]);
                 double rate = Double.parseDouble(data[3]);
 
-                Employee employee = new Employee(id, name,hours,rate);
-                System.out.printf("ID: %d | Name: %s | Gross Pay: $%.2f%n",
-                        employee.getEmployeeId(),
-                        employee.getName(),
-                        employee.getGrossPay());
+                Employee employee = new Employee(id, name, hours, rate);
+//                System.out.printf("ID: %d | Name: %s | Gross Pay: $%.2f%n",
+//                        employee.getEmployeeId(),
+//                        employee.getName(),
+//                        employee.getGrossPay());
+                employees.add(employee);
             }
 
             bufferedReader.close();
 
-            BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
-            writer.write("id|name|gross pay\n");
-            for (Employee employee : employees) {
-                String row = String.format("%d|%s|%.2f\n", employee.getEmployeeId());
-                writer.write(row);
+            if (outputFile.endsWith(".csv")) {
+                PayrollWriter.writeCsvFile(outputFile, employees);
+            }else {
+                System.out.println("Invalid file type");
             }
-            writer.close();
-
-            System.out.println("CSV payroll file is created");
-
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+
 }
