@@ -3,20 +3,20 @@ package com.pluralsight;
 import java.security.PrivateKey;
 
 public class Employee {
-    private  int employedId;
+    private  int employeeId;
     private  String name;
     private double hoursWorked;
     private double payRate;
 
-    public Employee(int employedId, String name, double hoursWorked, double payRate) {
-        this.employedId = employedId;
+    public Employee(int employeeId, String name, double hoursWorked, double payRate) {
+        this.employeeId = employeeId;
         this.name = name;
         this.hoursWorked = hoursWorked;
         this.payRate = payRate;
     }
 
-    public int getEmployedId() {
-        return employedId;
+    public int getEmployeeId() {
+        return employeeId;
     }
 
     public String getName(){
