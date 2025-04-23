@@ -17,6 +17,14 @@ public class BedtimeStories {
                 FileInputStream fis = new FileInputStream("src/main/resources/DataFiles/" + fileName);
                 Scanner fileScanner = new Scanner(fis);
 
+
+                // just to make sure your file exist in fileName //
+//            File file = new File(fileName);
+//            if (!file.exists()){
+//                System.out.println("Error: File not found!");
+//                return;
+//            }
+
                 int lineNumber = 1;
                 while (fileScanner.hasNextLine()) {
                     String line = fileScanner.nextLine();
