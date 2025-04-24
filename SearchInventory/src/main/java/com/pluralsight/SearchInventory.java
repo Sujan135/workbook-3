@@ -5,12 +5,16 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 
 public class SearchInventory {
     public static void main(String[] args) {
         ArrayList<Product> inventory = getInventory();
+
+        inventory.sort(Comparator.comparing(Product::getName));
 
 //        Scanner scanner = new Scanner(System.in);
 
