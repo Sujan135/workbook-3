@@ -14,7 +14,7 @@ public class SearchInventory {
     public static void main(String[] args) {
         ArrayList<Product> inventory = getInventory();
 
-        inventory.sort(Comparator.comparing(Product::getName));
+        Collections.sort(inventory, Comparator.comparing(Product::getName));
 
 //        Scanner scanner = new Scanner(System.in);
 
